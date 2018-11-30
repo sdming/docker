@@ -1,6 +1,4 @@
-## kubernetes 部署应用
-
-# kubernetes 开发环境安装
+## kubernetes 开发环境安装
 
 省安装步骤，本次使用 docker-for-mac 测试
 
