@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nodebook
+spec:
+  hosts:
+  - "*" 
+  gateways:
+  - nodebook-gateway
+  http:
+  - match:
+    - headers:
+        app-ver:
+          exact: v3
+    fault:
+      abort:
+        percent: 100
+        httpStatus: 500
+    route:
+    - destination:
+        host: nodebook
+        subset: v3
+  - route:
+    - destination:
+        host: nodebook
+        subset: v4
+

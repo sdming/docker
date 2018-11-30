@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nodebook
+spec:
+  hosts:
+  - "*" 
+  gateways:
+  - nodebook-gateway
+  http:
+  - route:
+    - destination:
+        host: nodebook
+        subset: v4
+

@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: nodebook
+spec:
+  host: nodebook #  nodebook.default.svc.cluster.local
+  trafficPolicy: # Envoy’s load balancing
+    loadBalancer:
+      simple: RANDOM
+  subsets:
+    - name: v3
+      labels:
+        version: v3
+    - name: v4
+      labels:
+        version: v4
